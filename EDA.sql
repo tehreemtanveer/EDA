@@ -1,7 +1,4 @@
 -- EXPLORATORY DATA ANALYSIS --
--- Here we are jsut going to explore the data and find trends or patterns or anything interesting like outliers
--- normally when you start the EDA process you have some idea of what you're looking for
--- with this info we are just going to look around and see what we find!
 
 SELECT * 
 FROM layoffs_staging3;
@@ -24,9 +21,7 @@ SELECT *
 FROM layoffs_staging3
 WHERE  percentage_laid_off = 1
 ORDER BY funds_raised_millions DESC;
--- BritishVolt looks like an EV company, Quibi! I recognize that company - wow raised like 2 billion dollars and went under - ouch
 
--- SOMEWHAT TOUGHER AND MOSTLY USING GROUP BY--------------------------------------------------------------------------------------------------
 -- Companies with the biggest single Layoff
 
 SELECT company, total_laid_off
@@ -69,7 +64,7 @@ FROM layoffs_staging3
 GROUP BY stage
 ORDER BY 2 DESC ;
 
--- TOUGHER QUERIES--------------------------
+
 
 -- Rolling Total of Layoffs Per Month
 SELECT SUBSTRING(date,1,7) AS dates, SUM(total_laid_off) AS total_laid_off
@@ -89,8 +84,8 @@ SELECT dates, total_laid, SUM(total_laid) OVER (ORDER BY dates ASC) as rolling_t
 FROM DATE_CTE
 ; 
 
--- Earlier we looked at Companies with the most Layoffs. Now let's look at that per year. It's a little more difficult.
--- I want to look at 
+-- Earlier was Companies with the most Layoffs. Now let's look at that per year. 
+
 
 WITH Company_Year AS 
 (
